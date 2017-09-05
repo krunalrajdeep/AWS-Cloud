@@ -1,0 +1,12 @@
+sudo yum update -y
+sudo yum install -y httpd24 php70 mysql56-server php70-mysqlnd
+sudo service httpd start
+sudo chkconfig httpd on
+echo "<?php phpinfo(); ?>" > /var/www/html/phpinfo.php
+sudo service mysqld start
+sudo mysql_secure_installation
+sudo yum install php70-mbstring.x86_64 php70-zip.x86_64 -y
+sudo service httpd restart
+wget https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-all-languages.tar.gz
+tar -xvzf phpMyAdmin-latest-all-languages.tar.gz
+mv phpMyAdmin-4.7.4-all-languages phpMyAdmin
